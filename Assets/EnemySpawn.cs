@@ -16,6 +16,7 @@ public class EnemySpawn : MonoBehaviour
     void Update()
     {
         CurrentTime -= Time.deltaTime;
+
         if (CurrentTime <= 0)
         {
             CurrentTime = MaxTime;
