@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class dragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
 
-    public RectTransform Rect;
+    public Transform Rect;
     
     public bool ison = false;
 
@@ -15,8 +15,9 @@ public class dragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     private void Awake()
     {
-        Rect = GetComponent<RectTransform>();
+       
     }
+     
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -27,7 +28,7 @@ public class dragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnDrag(PointerEventData eventData)
     {
         Debug.Log("Drag");
-        charecter.transform.position += new Vector3(eventData.delta.x, eventData.delta.y);
+        charecter.transform.position = new Vector3(Input.mousePosition.x / 10, 0, Input.mousePosition.y / 10);
     }
 
    public void OnPointerDown(PointerEventData eventData)
@@ -39,6 +40,6 @@ public class dragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("sizz");
-        ison = false;
+        charecter.transform.localPosition += Vector3.zero;
     }
 }
